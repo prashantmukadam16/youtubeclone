@@ -207,12 +207,12 @@ youtube-clone/
 
 Create the following Azure resources:
 
-- Azure Subscription
-- Resource Group
-- App Service Plan
-- Azure Web App
-- Configure Node.js Runtime
-- Enable Web App
+Azure Subscription
+Resource Group
+App Service Plan
+Azure Web App
+Configure Node.js Runtime
+Enable Web App
 
 ---
 
@@ -220,9 +220,9 @@ Create the following Azure resources:
 
 Create:
 
-- Azure DevOps Organization
-- Azure DevOps Project
-- Azure Repository
+Azure DevOps Organization
+Azure DevOps Project
+Azure Repository
 
 Push source code
 
@@ -246,11 +246,11 @@ Create an Azure Resource Manager Service Connection.
 
 Pipeline uses this secure connection to authenticate with Azure.
 
-Benefits
+**Benefits**
 
-- Secure Authentication
-- No credentials inside YAML
-- RBAC Enabled
+Secure Authentication
+No credentials inside YAML
+RBAC Enabled
 
 ---
 
@@ -264,12 +264,12 @@ Register Agent
 
 Verify Agent Online
 
-Benefits
+**Benefits**
 
-- Faster Builds
-- Reusable Environment
-- Custom Software
-- Better Performance
+Faster Builds
+Reusable Environment
+Custom Software
+Better Performance
 
 ---
 
@@ -369,9 +369,9 @@ Application Live
 
 Initialize Build Environment
 
-- Allocate Agent
-- Download Tasks
-- Load Variables
+Allocate Agent
+Download Tasks
+Load Variables
 
 ---
 
@@ -427,9 +427,9 @@ Verify Build
 
 Validation
 
-- Build Success
-- Static Files Generated
-- No Errors
+Build Success
+Static Files Generated
+No Errors
 
 ---
 
@@ -455,9 +455,9 @@ Publish Artifact
 
 Azure DevOps stores
 
-- Build Output
-- Deployment Package
-- Version History
+Build Output
+Deployment Package
+Version History
 
 ---
 
@@ -523,26 +523,26 @@ Production
 
 # ☁ Azure Services Used
 
-- Azure DevOps
-- Azure Repositories
-- Azure Pipelines
-- Azure Resource Manager
-- Azure App Service
-- Azure Service Connection
-- Self-hosted Agent
-- Git
-- Node.js
+Azure DevOps
+Azure Repositories
+Azure Pipelines
+Azure Resource Manager
+Azure App Service
+Azure Service Connection
+Self-hosted Agent
+Git
+Node.js
 
 ---
 
 # 🔒 Security Best Practices
 
-- Azure Resource Manager Service Connection
-- RBAC Access Control
-- Secure Pipeline Variables
-- No Hardcoded Credentials
-- Version Controlled YAML
-- Automated Deployments
+Azure Resource Manager Service Connection
+RBAC Access Control
+Secure Pipeline Variables
+No Hardcoded Credentials
+Version Controlled YAML
+Automated Deployments
 
 ---
 
@@ -550,43 +550,22 @@ Production
 
 Before Automation
 
-- Manual Deployment
-- Manual File Copy
-- Human Errors
-- Slow Releases
-- No Version Tracking
+Manual Deployment
+Manual File Copy
+Human Errors
+Slow Releases
+No Version Tracking
 
 After Automation
 
-- Automated CI/CD
-- One-click Deployment
-- Faster Releases
-- Consistent Builds
-- Reliable Deployment
-- Centralized Pipeline
-- Easy Rollback
-- Artifact Versioning
-
----
-
-# 🎯 Skills Demonstrated
-
-- Azure DevOps
-- Azure Pipelines
-- YAML
-- Azure App Service
-- Azure Resource Manager
-- Azure Service Connections
-- Azure Repositories
-- Self-hosted Agent
-- Git
-- React.js
-- Node.js
-- CI/CD
-- Build Automation
-- Deployment Automation
-- Production Release Management
-- DevOps Best Practices
+Automated CI/CD
+One-click Deployment
+Faster Releases
+Consistent Builds
+Reliable Deployment
+Centralized Pipeline
+Easy Rollback
+Artifact Versioning
 
 ---
 
@@ -619,18 +598,6 @@ After Automation
 - Multi-stage Release Pipeline
 - Blue-Green Deployment
 - Canary Deployment
-
----
-
-# 🤝 Contributing
-
-Contributions are welcome!
-
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push your branch
-5. Open a Pull Request
 
 ---
 
