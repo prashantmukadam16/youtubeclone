@@ -21,15 +21,15 @@ The entire software delivery lifecycle is automated using Azure Pipelines, enabl
 
 This repository showcases industry-standard DevOps practices including:
 
-- ✅ Azure DevOps Repositories
-- ✅ YAML Pipelines
-- ✅ Azure App Service Deployment
-- ✅ Azure Resource Manager Service Connection
-- ✅ Self-hosted Build Agent
-- ✅ Continuous Integration
-- ✅ Continuous Deployment
-- ✅ Automated Artifact Management
-- ✅ Production Deployment Workflow
+✅ Azure DevOps Repositories
+✅ YAML Pipelines
+✅ Azure App Service Deployment
+✅ Azure Resource Manager Service Connection
+✅ Self-hosted Build Agent
+✅ Continuous Integration
+✅ Continuous Deployment
+✅ Automated Artifact Management
+✅ Production Deployment Workflow
 
 ---
 
@@ -286,6 +286,53 @@ Pipeline Trigger
 ```yaml
 trigger:
 - main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+
+- task: NodeTool@0
+  displayName: 'Use Node.js'
+  inputs:
+    versionSpec: '18.x'
+
+- task: Npm@1
+  displayName: 'Install Frontend Dependencies'
+  inputs:
+    command: 'install'
+    workingDir: 'frontend'
+
+- task: Npm@1
+  displayName: 'Build Frontend'
+  inputs:
+    command: 'custom'
+    customCommand: 'run build'
+    workingDir: 'frontend'
+
+- script: |
+    echo "Checking build folder"
+    ls -la frontend
+    ls -la frontend/build
+  displayName: 'Verify Build Output'
+
+- task: ArchiveFiles@2
+  displayName: 'Archive Build'
+  inputs:
+    rootFolderOrFile: 'frontend/build'
+    includeRootFolder: false
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/frontend.zip'
+    replaceExistingArchive: true
+
+- task: AzureWebApp@1
+  displayName: 'Deploy Azure Web App'
+  inputs:
+    azureSubscription: 'prashantservice'
+    appType: 'webAppLinux'
+    appName: 'prashantyoutube'
+    package: '$(Build.ArtifactStagingDirectory)/frontend.zip'
+    startupCommand: 'pm2 serve /home/site/wwwroot --no-daemon --spa'
 ```
 
 ---
