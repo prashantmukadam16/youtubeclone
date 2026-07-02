@@ -1,0 +1,32 @@
+<div class="profile-container">
+    <div class="profile-header">
+        <img src="<%= user.avatar %>" alt="<%= user.username %>" class="profile-avatar">
+        <div class="profile-info">
+            <h1><%= user.username %></h1>
+            <p><%= subscriberCount %> subscribers</p>
+            <p><%= user.bio || 'No bio' %></p>
+            <button class="btn-subscribe" onclick="toggleSubscribe('<%= user._id %>')">Subscribe</button>
+        </div>
+    </div>
+
+    <div class="profile-content">
+        <h2>Videos by <%= user.username %></h2>
+        <div class="videos-grid">
+            <% if (videos && videos.length > 0) { %>
+                <% videos.forEach(video => { %>
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <img src="<%= video.thumbnail %>" alt="<%= video.title %>">
+                        </div>
+                        <div class="video-info">
+                            <h3><a href="/videos/watch/<%= video._id %>"><%= video.title %></a></h3>
+                            <p><%= video.views %> views</p>
+                        </div>
+                    </div>
+                <% }); %>
+            <% } else { %>
+                <p>No videos uploaded yet.</p>
+            <% } %>
+        </div>
+    </div>
+</div>

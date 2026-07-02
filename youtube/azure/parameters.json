@@ -1,0 +1,21 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "siteName": {
+      "value": "youtube-clone-prod"
+    },
+    "appServicePlanName": {
+      "value": "youtube-clone-plan-prod"
+    },
+    "location": {
+      "value": "eastus"
+    },
+    "skuName": {
+      "value": "B2"
+    },
+    "environment": {
+      "value": "prod"
+    }
+  }
+}

@@ -1,0 +1,114 @@
+trigger:
+  - main
+  - develop
+
+pr:
+  - main
+  - develop
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  dockerRegistryServiceConnection: 'Your-Docker-Registry-Connection'
+  imageRepository: 'youtube-clone'
+  containerRegistry: 'yourregistryname.azurecr.io'
+  dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
+  tag: '$(Build.BuildId)'
+  imageName: '$(containerRegistry)/$(imageRepository):$(tag)'
+
+stages:
+  - stage: Build
+    displayName: Build Stage
+    jobs:
+      - job: Build
+        displayName: Build Job
+        steps:
+          - task: UseNode@1
+            inputs:
+              version: '18.x'
+            displayName: 'Install Node.js'
+
+          - script: |
+              npm install
+              npm run build
+            displayName: 'Install dependencies and build'
+
+          - task: SonarCloudPrepare@1
+            inputs:
+              SonarCloud: 'SonarCloud'
+              organization: 'your-org'
+              scannerMode: 'CLI'
+              configMode: 'manual'
+              cliProjectKey: 'youtube-clone'
+              cliProjectName: 'YouTube Clone'
+              cliSources: 'src'
+            displayName: 'Prepare SonarCloud analysis'
+
+          - task: SonarCloudAnalyze@1
+            displayName: 'Run SonarCloud analysis'
+
+          - task: PublishBuildArtifacts@1
+            inputs:
+              PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+              ArtifactName: 'drop'
+            displayName: 'Publish build artifacts'
+
+  - stage: Test
+    displayName: Test Stage
+    dependsOn: Build
+    condition: succeeded()
+    jobs:
+      - job: Test
+        displayName: Run Tests
+        steps:
+          - task: UseNode@1
+            inputs:
+              version: '18.x'
+
+          - script: |
+              npm install
+              npm run test
+            displayName: 'Run unit tests'
+
+  - stage: Deploy_Dev
+    displayName: Deploy to Dev
+    dependsOn: Test
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/develop'))
+    jobs:
+      - deployment: Deploy
+        displayName: Deploy to Azure App Service (Dev)
+        environment: 'Development'
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - task: AzureWebApp@1
+                  inputs:
+                    azureSubscription: 'Your-Azure-Subscription'
+                    appType: 'webAppLinux'
+                    appName: 'youtube-clone-dev'
+                    package: '$(Pipeline.Workspace)/drop'
+                    runtimeStack: 'NODE|18-lts'
+                  displayName: 'Deploy to App Service (Dev)'
+
+  - stage: Deploy_Prod
+    displayName: Deploy to Production
+    dependsOn: Test
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
+    jobs:
+      - deployment: Deploy
+        displayName: Deploy to Azure App Service (Prod)
+        environment: 'Production'
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - task: AzureWebApp@1
+                  inputs:
+                    azureSubscription: 'Your-Azure-Subscription'
+                    appType: 'webAppLinux'
+                    appName: 'youtube-clone-prod'
+                    package: '$(Pipeline.Workspace)/drop'
+                    runtimeStack: 'NODE|18-lts'
+                  displayName: 'Deploy to App Service (Prod)'

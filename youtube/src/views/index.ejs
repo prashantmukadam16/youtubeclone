@@ -1,0 +1,35 @@
+<div class="hero-section">
+    <h1>Welcome to YouTube Clone</h1>
+    <p>Watch unlimited videos from creators around the world</p>
+    <div class="search-container">
+        <form action="/videos/search" method="GET">
+            <input type="text" name="q" placeholder="Search videos..." required>
+            <button type="submit"><i class="fas fa-search"></i></button>
+        </form>
+    </div>
+</div>
+
+<section class="videos-section">
+    <h2>Latest Videos</h2>
+    <div class="videos-grid">
+        <% if (videos && videos.length > 0) { %>
+            <% videos.forEach(video => { %>
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="<%= video.thumbnail %>" alt="<%= video.title %>">
+                        <div class="video-duration"><%= video.duration || 'N/A' %></div>
+                    </div>
+                    <div class="video-info">
+                        <h3><a href="/videos/watch/<%= video._id %>"><%= video.title %></a></h3>
+                        <p class="channel-name"><%= video.uploader.username %></p>
+                        <p class="video-stats">
+                            <%= video.views %> views • <%= new Date(video.createdAt).toLocaleDateString() %>
+                        </p>
+                    </div>
+                </div>
+            <% }); %>
+        <% } else { %>
+            <p>No videos available yet.</p>
+        <% } %>
+    </div>
+</section>

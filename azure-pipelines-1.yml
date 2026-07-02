@@ -1,0 +1,49 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+
+- task: NodeTool@0
+  displayName: 'Use Node.js'
+  inputs:
+    versionSpec: '18.x'
+
+- task: Npm@1
+  displayName: 'Install Frontend Dependencies'
+  inputs:
+    command: 'install'
+    workingDir: 'frontend'
+
+- task: Npm@1
+  displayName: 'Build Frontend'
+  inputs:
+    command: 'custom'
+    customCommand: 'run build'
+    workingDir: 'frontend'
+
+- script: |
+    echo "Checking build folder"
+    ls -la frontend
+    ls -la frontend/build
+  displayName: 'Verify Build Output'
+
+- task: ArchiveFiles@2
+  displayName: 'Archive Build'
+  inputs:
+    rootFolderOrFile: 'frontend/build'
+    includeRootFolder: false
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/frontend.zip'
+    replaceExistingArchive: true
+
+- task: AzureWebApp@1
+  displayName: 'Deploy Azure Web App'
+  inputs:
+    azureSubscription: 'prashantservice'
+    appType: 'webAppLinux'
+    appName: 'prashantyoutube'
+    package: '$(Build.ArtifactStagingDirectory)/frontend.zip'
+    startupCommand: 'pm2 serve /home/site/wwwroot --no-daemon --spa'

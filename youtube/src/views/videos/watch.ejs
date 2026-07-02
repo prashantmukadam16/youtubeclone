@@ -1,0 +1,84 @@
+<div class="video-container">
+    <div class="video-player">
+        <video controls>
+            <source src="<%= video.videoFile %>" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <div class="video-details">
+        <h1><%= video.title %></h1>
+        
+        <div class="video-meta">
+            <span><%= video.views %> views</span>
+            <span><%= new Date(video.createdAt).toLocaleDateString() %></span>
+        </div>
+
+        <div class="video-actions">
+            <button class="like-btn" onclick="toggleLike('<%= video._id %>')">
+                <i class="fas fa-thumbs-up"></i> Like
+            </button>
+            <button class="dislike-btn">
+                <i class="fas fa-thumbs-down"></i> Dislike
+            </button>
+            <button class="share-btn">
+                <i class="fas fa-share"></i> Share
+            </button>
+        </div>
+
+        <div class="channel-info">
+            <img src="<%= video.uploader.avatar %>" alt="<%= video.uploader.username %>">
+            <div>
+                <h3><a href="/users/profile/<%= video.uploader._id %>"><%= video.uploader.username %></a></h3>
+                <button onclick="toggleSubscribe('<%= video.uploader._id %>')">Subscribe</button>
+            </div>
+        </div>
+
+        <div class="video-description">
+            <%= video.description %>
+        </div>
+    </div>
+</div>
+
+<section class="related-videos">
+    <h2>Related Videos</h2>
+    <div class="videos-grid">
+        <% if (related && related.length > 0) { %>
+            <% related.forEach(relatedVideo => { %>
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="<%= relatedVideo.thumbnail %>" alt="<%= relatedVideo.title %>">
+                    </div>
+                    <div class="video-info">
+                        <h3><a href="/videos/watch/<%= relatedVideo._id %>"><%= relatedVideo.title %></a></h3>
+                        <p><%= relatedVideo.uploader.username %></p>
+                    </div>
+                </div>
+            <% }); %>
+        <% } %>
+    </div>
+</section>
+
+<div class="comments-section">
+    <h2>Comments</h2>
+    <div class="comment-form">
+        <textarea placeholder="Add a comment..." id="commentText"></textarea>
+        <button onclick="addComment('<%= video._id %>')">Comment</button>
+    </div>
+
+    <div class="comments-list">
+        <% if (video.comments && video.comments.length > 0) { %>
+            <% video.comments.forEach(comment => { %>
+                <div class="comment">
+                    <img src="<%= comment.user.avatar %>" alt="<%= comment.user.username %>">
+                    <div class="comment-content">
+                        <h4><%= comment.user.username %></h4>
+                        <p><%= comment.text %></p>
+                    </div>
+                </div>
+            <% }); %>
+        <% } %>
+    </div>
+</div>
+
+<script src="/js/watch.js"></script>
