@@ -161,26 +161,33 @@ Production Application Live
 
 # 📁 Repository Structure
 
-```
+```text
 youtube-clone/
 │
 ├── frontend/
 │   ├── public/
+│   │   └── index.html
+│   │
 │   ├── src/
+│   │   ├── App.js
+│   │   ├── App.css
+│   │   └── index.js
+│   │
 │   ├── package.json
-│   └── package-lock.json
+│   └── Dockerfile
 │
 ├── backend/
-│   ├── controllers/
-│   ├── models/
-│   ├── routes/
-│   ├── server.js
-│   └── package.json
+│   ├── src/
+│   │   └── App.js
+│   │
+│   ├── package.json
+│   └── Dockerfile
 │
-├── azure-pipelines.yml
+├── Kubernetes/
+│   ├── backend-deployment.yaml
 │
+├── azure-pipelines-1.yml
 ├── README.md
-│
 └── .gitignore
 ```
 
