@@ -160,36 +160,32 @@ Production Application Live
 ---
 
 # 📁 Repository Structure
+## 📁 Repository Structure
 
 ```text
-youtube-clone/
-│
-├── 📂 frontend/
-│   ├── 📂 public/
-│   │   └── 📄 index.html
-│   │
-│   ├── 📂 src/
-│   │   ├── 📄 App.js
-│   │   ├── 📄 App.css
-│   │   └── 📄 index.js
-│   │
-│   ├── 📄 package.json
-│   └── 🐳 Dockerfile
-│
-├── 📂 backend/
-│   ├── 📂 src/
-│   │   └── 📄 App.js
-│   │
-│   ├── 📄 package.json
-│   └── 🐳 Dockerfile
-│
-├── 📂 Kubernetes/
-│   └── ☸️ backend-deployment.yaml
-│
-├── ⚙️ azure-pipelines-1.yml
-├── 📘 README.md
-└── 🚫 .gitignore
+youtube-clone
+├── frontend
+│   ├── public
+│   │   └── index.html
+│   ├── src
+│   │   ├── App.js
+│   │   ├── App.css
+│   │   └── index.js
+│   ├── package.json
+│   └── Dockerfile
+├── backend
+│   ├── src
+│   │   └── App.js
+│   ├── package.json
+│   └── Dockerfile
+├── Kubernetes
+│   └── backend-deployment.yaml
+├── azure-pipelines-1.yml
+├── README.md
+└── .gitignore
 ```
+
+
 
 ## 📂 Directory Description
 
