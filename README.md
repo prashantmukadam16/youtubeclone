@@ -164,33 +164,51 @@ Production Application Live
 ```text
 youtube-clone/
 │
-├── frontend/
-│   ├── public/
-│   │   └── index.html
+├── 📂 frontend/
+│   ├── 📂 public/
+│   │   └── 📄 index.html
 │   │
-│   ├── src/
-│   │   ├── App.js
-│   │   ├── App.css
-│   │   └── index.js
+│   ├── 📂 src/
+│   │   ├── 📄 App.js
+│   │   ├── 📄 App.css
+│   │   └── 📄 index.js
 │   │
-│   ├── package.json
-│   └── Dockerfile
+│   ├── 📄 package.json
+│   └── 🐳 Dockerfile
 │
-├── backend/
-│   ├── src/
-│   │   └── App.js
+├── 📂 backend/
+│   ├── 📂 src/
+│   │   └── 📄 App.js
 │   │
-│   ├── package.json
-│   └── Dockerfile
+│   ├── 📄 package.json
+│   └── 🐳 Dockerfile
 │
-├── Kubernetes/
-│   ├── backend-deployment.yaml
+├── 📂 Kubernetes/
+│   └── ☸️ backend-deployment.yaml
 │
-├── azure-pipelines-1.yml
-├── README.md
-└── .gitignore
+├── ⚙️ azure-pipelines-1.yml
+├── 📘 README.md
+└── 🚫 .gitignore
 ```
 
+## 📂 Directory Description
+
+| Folder/File | Description |
+|--------------|-------------|
+| **frontend/** | React.js frontend application source code. |
+| **frontend/public/** | Static assets served directly by the React application. |
+| **frontend/src/** | React components, styles, and application entry point. |
+| **frontend/package.json** | Frontend dependencies and npm scripts. |
+| **frontend/Dockerfile** | Docker configuration for the frontend application. |
+| **backend/** | Node.js backend application source code. |
+| **backend/src/** | Backend server implementation and API logic. |
+| **backend/package.json** | Backend dependencies and npm scripts. |
+| **backend/Dockerfile** | Docker configuration for the backend application. |
+| **Kubernetes/** | Kubernetes deployment manifests. |
+| **backend-deployment.yaml** | Kubernetes Deployment manifest for the backend application. |
+| **azure-pipelines-1.yml** | Azure DevOps YAML pipeline for CI/CD automation. |
+| **README.md** | Project documentation, architecture, setup guide, and deployment workflow. |
+| **.gitignore** | Files and directories excluded from Git version control. |
 ---
 
 # ⚙ Technology Stack
