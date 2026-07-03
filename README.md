@@ -160,7 +160,6 @@ Production Application Live
 ---
 
 # 📁 Repository Structure
-## 📁 Repository Structure
 
 ```text
 youtube-clone
@@ -592,33 +591,33 @@ Artifact Versioning
 
 # 📸 Project Deliverables
 
-- Azure DevOps Repository
-- Azure YAML Pipeline
-- Azure App Service Deployment
-- Azure Service Connection
-- Self-hosted Agent Configuration
-- Production CI/CD Pipeline
-- Automated Deployment Workflow
-- React.js Frontend
-- Node.js Backend
+Azure DevOps Repository
+Azure YAML Pipeline
+Azure App Service Deployment
+Azure Service Connection
+Self-hosted Agent Configuration
+Production CI/CD Pipeline
+Automated Deployment Workflow
+React.js Frontend
+Node.js Backend
 
 ---
 
 # 🚀 Future Enhancements
 
-- Docker Containerization
-- Azure Container Registry
-- Azure Kubernetes Service (AKS)
-- Terraform Infrastructure as Code
-- SonarQube Code Analysis
-- OWASP Dependency Check
-- Trivy Security Scanning
-- Azure Key Vault
-- Azure Monitor
-- Application Insights
-- Multi-stage Release Pipeline
-- Blue-Green Deployment
-- Canary Deployment
+Docker Containerization
+Azure Container Registry
+Azure Kubernetes Service (AKS)
+Terraform Infrastructure as Code
+SonarQube Code Analysis
+OWASP Dependency Check
+Trivy Security Scanning
+Azure Key Vault
+Azure Monitor
+Application Insights
+Multi-stage Release Pipeline
+Blue-Green Deployment
+Canary Deployment
 
 ---
 
@@ -634,4 +633,4 @@ It helps others discover the project and motivates future improvements.
 
 **Prashant Mukadam**
 
-DevOps | Cloud Engineer | Azure | CI/CD | Automation
+DevOps | Cloud Engineer | Azure | CI/CD | Automation | Azure DevOps |
